@@ -3,9 +3,6 @@ using namespace std;
 
 int main() {
     int input;
-    int right;
-    int sum;
-    int sum_right;
     int new_num = 0;
     int cycle = 0;
 
@@ -17,22 +14,15 @@ int main() {
 
     if(input / 10 == 0) {
         cycle++;
-        right = input;
         new_num = input * 11;
     }
     else {
-        right = input % 10;
-        sum = input / 10 + right;
-        sum_right = sum % 10;
-        new_num = right * 10 + sum_right;
+        new_num = input % 10 * 10 + (input / 10 + input % 10) % 10;
         cycle++;
     }
 
     while(new_num != input) {
-        right = new_num % 10;
-        sum = new_num / 10 + right;
-        sum_right = sum % 10;
-        new_num = right * 10 + sum_right;
+        new_num = new_num % 10 * 10 + (new_num / 10 + new_num % 10) % 10;
         cycle++;
     }
 
